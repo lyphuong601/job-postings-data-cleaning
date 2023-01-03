@@ -5,7 +5,9 @@ import numpy as np
 pd.set_option('display.max_rows', None)
 pd.set_option('display.expand_frame_repr', False)
 
-
+##########################################################
+# Data cleaning functions
+##########################################################
 def load_data(filename: str) -> pd.DataFrame:
     """Read data from a filename and output it as a dataframe"""
     df = pd.read_csv(filename)
@@ -99,6 +101,9 @@ def seniority(title: str) -> str:
         return 'staff'
 
 
+##########################################################
+# Cleaning routine (Combined)
+##########################################################
 def process_data(df: pd.DataFrame) -> pd.DataFrame:
     """Process dataset using functions created above"""
     drop_columns(df, ['index'])
@@ -133,18 +138,3 @@ def process_data(df: pd.DataFrame) -> pd.DataFrame:
     df['Position'] = df['Job Title'].apply(get_job_title)
     df['Seniority'] = df['Job Title'].apply(seniority)
     return df
-
-
-if __name__ == "__main__":
-    filename = os.path.join('Dataset/Uncleaned_DS_jobs.csv')
-
-    if os.path.exists(filename):
-        df = load_data(filename)
-        print(f'Original Data: {df.shape}')
-        cleaned_df = process_data(df)
-        print(f'After Cleaning: {cleaned_df.shape}')
-        
-        df.to_csv("Dataset/cleaned_DS_jobs.csv", index=False)
-    else:
-        print(f'File not found {filename}')
-        
