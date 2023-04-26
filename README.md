@@ -1,7 +1,7 @@
 # Cleaning Web-Scraped Data With Pandas & Numpy
 
 ## 📌 Introduction
-- Objective: Clean job postings data scapped from a digital job search site
+- Objective: Clean job postings data scraped from a digital job search site
 
 ## Data Overview:
 - Job postings raw data was scraped from Glassdoor Data Science post. 
